@@ -59,6 +59,3 @@ const main = async () => {
 };
 
 main();
-
-
-// vectorStoreId:  vs_690349b01adc81918315954ba5fcc1b1

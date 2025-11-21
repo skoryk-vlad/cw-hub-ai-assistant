@@ -99,7 +99,7 @@ data/
 
 The app uses OpenAI's **Responses API** (not Chat Completions):
 - Tools are passed as `FunctionTool[]` format (not `ChatCompletionTool[]`)
-- File search is integrated via vector store ID (hardcoded in chat.ts)
+- File search is integrated via vector store ID (configured via `OPENAI_VECTOR_STORE_ID` env var)
 - Access tokens are injected into every tool call (`{ ...args, accessToken }`)
 - Conversation history stored in MongoDB with token usage tracking
 
@@ -116,12 +116,14 @@ The app uses OpenAI's **Responses API** (not Chat Completions):
 ```bash
 MONGODB_URI=mongodb://root:example@mongodb:27017/clockwise_ai?authSource=admin
 OPENAI_API_KEY=sk-...
+OPENAI_VECTOR_STORE_ID=vs_...
 ```
 
 **For Local Development:**
 ```bash
 PORT=3001
 OPENAI_API_KEY=sk-...
+OPENAI_VECTOR_STORE_ID=vs_...
 APP_URL=http://localhost:3000
 ALLOWED_ORIGIN=http://localhost:4000
 JWT_SECRET=local-jwt-secret
@@ -139,8 +141,8 @@ MONGODB_URI=mongodb://root:example@localhost:27017/clockwise_ai?authSource=admin
 
 ### When Changing OpenAI Integration
 
-- Vector store ID is hardcoded in `apps/web/src/chat/openai-integration.ts`
-- After running `npm run vector:create`, update this line with new vector store ID
+- Vector store ID is configured via `OPENAI_VECTOR_STORE_ID` environment variable
+- After running `npm run vector:create`, update the environment variable with the new vector store ID
 - System prompt is in `apps/web/src/config/prompts/assistant.prompt.md`
 - Model configuration is in `apps/web/src/config/openai.config.ts`
 - OpenAI integration logic is split between:

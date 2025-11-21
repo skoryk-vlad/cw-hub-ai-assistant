@@ -1,3 +1,5 @@
+import { config } from './index.js';
+
 export enum OpenAiModel {
   GPT_4O_MINI = 'gpt-4o-mini',
   GPT_5_MINI = 'gpt-5-mini',
@@ -13,7 +15,7 @@ export const openaiConfig = {
   model: OpenAiModel.GPT_5_1,
 
   /** Vector store ID for file search (RAG) */
-  vectorStoreId: 'vs_690349b01adc81918315954ba5fcc1b1',
+  vectorStoreId: config.openaiVectorStoreId,
 
   /** Configuration for title generation */
   titleGeneration: {

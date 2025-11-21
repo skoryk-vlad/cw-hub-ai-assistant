@@ -15,6 +15,9 @@ export const config = {
   /** OpenAI API key */
   openaiApiKey: validateRequired(process.env.OPENAI_API_KEY, 'OPENAI_API_KEY'),
 
+  /** OpenAI Vector Store ID for file search (RAG) */
+  openaiVectorStoreId: process.env.OPENAI_VECTOR_STORE_ID,
+
   /** Server port */
   port: parseInt(process.env.PORT || '3001', 10),
 
