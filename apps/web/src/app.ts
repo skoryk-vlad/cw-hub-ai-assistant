@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import { readFileSync } from 'fs';
 import chatRoutes from './chat/chat.routes.js';
+import authRoutes from './auth/auth.routes.js';
 import { errorHandler } from './middleware/error-handler.middleware.js';
 
 /**
@@ -33,7 +34,13 @@ export function createApp() {
     res.send(injectedHtml);
   });
 
+  // Login page for standalone mode
+  app.get('/login', (_req, res) => {
+    res.sendFile(path.join(publicPath, 'login.html'));
+  });
+
   // API routes
+  app.use('/auth', authRoutes);
   app.use('/chat', chatRoutes);
 
   // Health check

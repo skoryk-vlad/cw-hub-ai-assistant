@@ -16,9 +16,13 @@ export async function postChat(req: Request, res: Response) {
   }
 
   try {
+    if (!req.user?.id) {
+      return res.status(401).json({ error: 'User ID missing from authentication' });
+    }
+
     const result = await handleChatTurn({
-      userId: req.user!.id,
-      userRoleId: req.user!.roleId,
+      userId: req.user.id,
+      userRoleId: req.user.roleId!,
       accessToken: req.accessToken!,
       conversationId,
       userMessage: message,

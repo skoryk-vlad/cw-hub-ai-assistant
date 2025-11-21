@@ -3,21 +3,10 @@ services:
     image: mongo:7
     container_name: mongodb
     command: --quiet --logpath /dev/null
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: example
-    #   MONGO_INITDB_DATABASE: clockwise_ai
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-    # healthcheck:
-    #   test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-    #   interval: 10s
-    #   timeout: 10s
-    #   retries: 5
-    # logging:
-    #   driver: "none"
 
   api:
     build: .
@@ -27,17 +16,10 @@ services:
       - NODE_ENV=development
     volumes:
       - .:/app
-      # Use named volume for node_modules to avoid reinstalling
-      # - node_modules:/app/node_modules
     ports:
       - '3001:3001'
     depends_on:
       - mongodb
-      # mongodb:
-        # condition: service_healthy
-    # tty: true
-    # stdin_open: true
 
 volumes:
   mongo-data:
-  # node_modules:

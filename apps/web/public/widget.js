@@ -3,7 +3,7 @@
   const scriptSrc = document.currentScript?.src || '';
   const WIDGET_ORIGIN = scriptSrc
     ? new URL(scriptSrc).origin
-    : 'http://localhost:3001';
+    : window.location.origin;
 
   // --- Styles ---
   const style = document.createElement('style');

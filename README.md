@@ -207,16 +207,62 @@ MONGODB_URI=mongodb://...
 
 # Optional
 PORT=3001                          # Default port (3000 also works)
-APP_URL=http://localhost:3000      # Your frontend app URL
-ALLOWED_ORIGIN=http://localhost:4000  # CORS allowed origin
+APP_URL=http://localhost:3000      # Your backend API URL (used for authentication in standalone mode)
+ALLOWED_ORIGIN=http://localhost:4000  # CORS allowed origin (for embedded mode)
 JWT_SECRET=your-jwt-secret         # Secret for JWT token verification
 ```
 
 ## API Endpoints
 
 - `POST /chat` - Send chat message (requires Bearer token)
+- `POST /auth/login` - Login with email/password (for standalone mode)
+- `POST /auth/refresh` - Refresh access token using refresh token
+- `POST /auth/logout` - Logout (clears session)
 - `GET /chat-ui` - Chat interface
+- `GET /login` - Login page (for standalone mode)
 - `GET /health` - Health check
+
+## Usage Modes
+
+The chat assistant supports two different modes of operation:
+
+### 1. Embedded Mode (Original)
+
+The assistant runs embedded in your frontend application via an iframe. Authentication is handled by passing the user's access token from the parent application to the iframe via postMessage.
+
+**Use this mode when:**
+- You want to integrate the assistant into an existing authenticated application
+- Your application already handles user authentication
+- You want the assistant to use the logged-in user's credentials
+
+See [Frontend Integration](#frontend-integration) section below for implementation details.
+
+### 2. Standalone Mode (New)
+
+The assistant runs as a standalone web application with its own login page. Users authenticate directly with email/password.
+
+**Use this mode when:**
+- You want to access the assistant directly in a browser without a parent application
+- You need a standalone deployment
+- You want users to log in directly to the assistant
+
+**How to use:**
+
+1. Ensure `APP_URL` environment variable points to your backend authentication API
+2. Navigate to `http://localhost:3001/login` in your browser
+3. Enter your email and password
+4. Upon successful login, you'll be redirected to the chat interface
+
+**How it works:**
+
+- User enters credentials on login page
+- Login endpoint (`/auth/login`) forwards credentials to backend API
+- Backend API validates credentials and returns access and refresh tokens
+- Our server wraps these tokens in a JWT for secure storage
+- Tokens are stored in localStorage
+- Chat UI automatically detects standalone mode and uses localStorage tokens
+- When access token expires (401 error), automatically refreshes using refresh token
+- Logout clears localStorage and redirects to login page
 
 ## Frontend Integration
 
