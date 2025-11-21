@@ -103,7 +103,7 @@ export async function refresh(req: Request, res: Response) {
 
   try {
     // Decode our wrapper JWT to get the backend refresh token
-    const payload = jwt.verify(clientRefreshToken, process.env.JWT_SECRET!) as {
+    const payload = jwt.verify(clientRefreshToken, process.env.JWT_SECRET) as {
       userId: number;
       email: string;
       backendRefreshToken?: string;
