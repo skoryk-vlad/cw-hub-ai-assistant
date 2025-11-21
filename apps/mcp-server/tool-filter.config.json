@@ -1,0 +1,24 @@
+{
+  "include": {
+    "operationIds": ["AuthController_me", "RolesController_findAll"]
+  },
+  "exclude": {
+    "tags": [
+      "Admin",
+      "Auth",
+      "Emoji-statuses",
+      "Roles",
+      "TopTracker",
+      "UpWork"
+    ],
+    "paths": ["*excel*", "*chart*", "*image*"],
+    "operationIds": [
+      "UsersController_deleteImage",
+      "UsersController_endRegistration",
+      "TimeAdminController_getTimeByProjects",
+      "TimeAdminController_usersWorkload",
+      "TimeAdminController_utilizationRateByRole"
+    ],
+    "methods": []
+  }
+}

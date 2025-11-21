@@ -1,0 +1,42 @@
+{
+  "name": "clockwise-assistant",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build",
+    "build:web": "tsc --project apps/web/tsconfig.json",
+    "build:mcp": "tsc --project apps/mcp-server/tsconfig.json",
+    "dev:web": "tsx watch apps/web/src/index.ts",
+    "dev:mcp": "tsx watch apps/mcp-server/src/index.ts",
+    "dev": "tsx watch apps/web/src/index.ts",
+    "start": "node dist/web/index.js",
+    "start:web": "node dist/web/index.js",
+    "start:mcp": "node dist/mcp-server/index.js",
+    "tools:generate": "tsx scripts/generate-mcp-tools.ts --in ./data/api-collections/postman-descriptions-roles.json --out ./apps/mcp-server/src/tools-auto --forceBearer",
+    "vector:create": "tsx scripts/create-vector-db.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.22.0",
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.1",
+    "openai": "^6.9.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

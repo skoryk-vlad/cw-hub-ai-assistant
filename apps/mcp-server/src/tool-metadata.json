@@ -1,0 +1,2507 @@
+{
+  "tools": [
+    {
+      "name": "users-find-all",
+      "category": "users",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of users",
+      "relatedTools": [
+        "users-find-one",
+        "users-update",
+        "users-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "users-count-billable-users",
+      "category": "users",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns the total number of billable users.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "users-teammates",
+      "category": "users",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns a list of users with their skills.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "users-find-one",
+      "category": "users",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "single"
+      ],
+      "description": "Fetches a user with related data by their ID.",
+      "relatedTools": [
+        "users-find-all",
+        "users-update",
+        "users-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "users-update",
+      "category": "users",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates a user's profile information and profile image.",
+      "relatedTools": [
+        "users-find-all",
+        "users-find-one",
+        "users-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "users-remove",
+      "category": "users",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a user from the database.",
+      "relatedTools": [
+        "users-find-all",
+        "users-find-one",
+        "users-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "users-start-registration",
+      "category": "users",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Creates a new user and returns user details",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "users-resend-invitation-email",
+      "category": "users",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Resends an invitation email to a user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "users-deactivate",
+      "category": "users",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "admin"
+      ],
+      "description": "Deactivates a user and returns the result status",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "users-activate",
+      "category": "users",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "admin"
+      ],
+      "description": "Activates a user account by ID.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "user-skills-add-skill",
+      "category": "users-skills",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Associates a specified skill with a user.",
+      "relatedTools": [
+        "user-skills-remove-skill",
+        "user-skills-update-skill"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "user-skills-remove-skill",
+      "category": "users-skills",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Deletes a specific skill from a user's profile",
+      "relatedTools": [
+        "user-skills-add-skill",
+        "user-skills-update-skill"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "user-skills-update-skill",
+      "category": "users-skills",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Modifies an existing skill for a user",
+      "relatedTools": [
+        "user-skills-add-skill",
+        "user-skills-remove-skill"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "allocation-get-allocation-history",
+      "category": "allocation-history",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of allocation history entries",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "capacity-get-capacity-history",
+      "category": "capacity-history",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of capacity history entries.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "roles-find-all",
+      "category": "roles",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of roles",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "auth-me",
+      "category": "auth",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns the current user's details based on authentication.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-find-upcoming-events",
+      "category": "events",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of upcoming events.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-find-all",
+      "category": "events",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of events",
+      "relatedTools": [
+        "events-create",
+        "events-update",
+        "events-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-create",
+      "category": "events",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates a new event and returns the created event details.",
+      "relatedTools": [
+        "events-find-all",
+        "events-update",
+        "events-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-get-requested-events",
+      "category": "events",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of requested events",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "events-approve",
+      "category": "events",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "admin"
+      ],
+      "description": "Updates the approval status of an event.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "events-update",
+      "category": "events",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates an existing event and returns the updated event details",
+      "relatedTools": [
+        "events-find-all",
+        "events-create",
+        "events-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-remove",
+      "category": "events",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes an event and returns the result.",
+      "relatedTools": [
+        "events-find-all",
+        "events-create",
+        "events-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-validate-new-vacation",
+      "category": "events",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Validates the provided vacation request data.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-validate-update-vacation",
+      "category": "events",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Validates and processes a vacation update request",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-history-get-events-history-filters-options",
+      "category": "events-history",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns available filter options for event history.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "events-history-get-all-events-grouped-history",
+      "category": "events-history",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns the complete grouped history of events.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "job-history-find-all",
+      "category": "job-history",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns the job history for a specified user.",
+      "relatedTools": [
+        "job-history-delete"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "job-history-new",
+      "category": "job-history",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates a new job history entry for a user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "job-history-put-all",
+      "category": "job-history",
+      "operation": "write",
+      "httpMethod": "PUT",
+      "tags": [
+        "write",
+        "list"
+      ],
+      "description": "Updates and returns the job history for a specified user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "job-history-delete",
+      "category": "job-history",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Deletes a job history record and returns the result.",
+      "relatedTools": [
+        "job-history-find-all"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "vacations-vacation-change",
+      "category": "vacations",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Updates the vacation balance for a specified user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "vacations-get-all-history",
+      "category": "vacations",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of vacation history entries.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "vacations-get-sum-of-vacation-balance-changes-for-current-year-b",
+      "category": "vacations",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns the sum of vacation balance changes for the current year by user ID.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "time-users-time-logs",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns a list of user time logs",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-projects-time-logs",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns statistical data of time logs by projects.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-util",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns the utilization rate information.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "time-commercial-rate",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns billed, non-billed, and total hours for last week",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "time-get-last-week-time",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns statistics for the previous week's time usage.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-calendar-report",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns a calendar report in Excel format.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5,
+        9
+      ]
+    },
+    {
+      "name": "time-add-time",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Adds a new time entry for tracking purposes.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-get-tracked-time",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of tracked work periods.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-change-time",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write"
+      ],
+      "description": "Modifies an existing tracked time entry.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-delete-tracked-time",
+      "category": "time-statistics",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a tracked time entry and returns the affected count.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-get-time-report",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a detailed time report for the specified period.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-change-time-period",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write"
+      ],
+      "description": "Modifies the tracked time period and returns affected count.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-get-comments",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of work period comments.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-delete-comments",
+      "category": "time-statistics",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes specified comments and returns their IDs.",
+      "relatedTools": [
+        "time-edit-comments"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-edit-comments",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates and returns a list of edited comments",
+      "relatedTools": [
+        "time-delete-comments"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-get-all-history",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of all time logs history.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "time-get-edit-window",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "update",
+        "mutation"
+      ],
+      "description": "Returns a list of edit windows for work periods",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-open-edit-window",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Returns a list of opened edit windows",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "time-close-edit-window",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Closes an edit window and updates its status.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "user-problem-time-get-users-with-time-problem",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of users experiencing time-related problems",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "user-problem-time-resolve-user-time-problem",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Resolves a user's time problem and returns the updated information.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "time-sharing-store-sharing",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Creates a new time sharing entry",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "time-sharing-get-time-share-requests",
+      "category": "time-statistics",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of time share requests with count.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "time-sharing-approve-sharing",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "admin"
+      ],
+      "description": "Returns a list of approved time sharing IDs",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "time-sharing-decline-sharing",
+      "category": "time-statistics",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Returns an array of declined request IDs.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "streams-get-all",
+      "category": "streams",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of all available streams.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "streams-create",
+      "category": "streams",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates a new stream and returns the created stream data.",
+      "relatedTools": [
+        "streams-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "streams-remove-stream",
+      "category": "streams",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a stream and returns affected count",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "streams-update",
+      "category": "streams",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates a stream with the provided data.",
+      "relatedTools": [
+        "streams-create"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "streams-get-all-streams-for-user",
+      "category": "streams",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of streams associated with a user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "streams-get-all-streams-user-ever-had",
+      "category": "streams",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of all streams associated with the user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "streams-get-last-stream",
+      "category": "streams",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns the most recent stream for the user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "projects-find-all",
+      "category": "projects",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of projects including client and user information.",
+      "relatedTools": [
+        "projects-create",
+        "projects-find-one",
+        "projects-update",
+        "projects-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "projects-create",
+      "category": "projects",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates and returns a newly created project",
+      "relatedTools": [
+        "projects-find-all",
+        "projects-find-one",
+        "projects-update",
+        "projects-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "projects-find-one",
+      "category": "projects",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "single"
+      ],
+      "description": "Returns details of a specific project.",
+      "relatedTools": [
+        "projects-find-all",
+        "projects-create",
+        "projects-update",
+        "projects-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "projects-update",
+      "category": "projects",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates an existing project and returns the updated project data",
+      "relatedTools": [
+        "projects-find-all",
+        "projects-create",
+        "projects-find-one",
+        "projects-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "projects-remove",
+      "category": "projects",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a project and returns affected count.",
+      "relatedTools": [
+        "projects-find-all",
+        "projects-create",
+        "projects-find-one",
+        "projects-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "projects-restore",
+      "category": "projects",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Restores a project by its ID and returns the affected count.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "projects-history-get-projects-history",
+      "category": "projects-history",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns the full history of projects.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "skills-find-all",
+      "category": "skills",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of skills.",
+      "relatedTools": [
+        "skills-update",
+        "skills-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "skills-new-skill",
+      "category": "skills",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates a new skill entry in the system",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "skills-get-users",
+      "category": "skills",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of users with their associated skills.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "skills-add-users",
+      "category": "skills",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Returns a list of user skills",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "skills-search-skill",
+      "category": "skills",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns skills with associated users.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "skills-find-by-id",
+      "category": "skills",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "single"
+      ],
+      "description": "Fetches a skill object based on its unique identifier.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "skills-update",
+      "category": "skills",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates a skill and returns affected count",
+      "relatedTools": [
+        "skills-find-all",
+        "skills-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "skills-remove",
+      "category": "skills",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a skill and returns affected count",
+      "relatedTools": [
+        "skills-find-all",
+        "skills-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "ratings-get-users-from-me",
+      "category": "ratings",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of users with their ratings.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "ratings-get-users-count",
+      "category": "ratings",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns the total number of users.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "ratings-feedback",
+      "category": "ratings",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns feedback data for the authenticated user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "ratings-all-feedback",
+      "category": "ratings",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "list"
+      ],
+      "description": "Returns a list of all user feedback entries.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "ratings-detailed-feedback",
+      "category": "ratings",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns detailed feedback data for users.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "ratings-store",
+      "category": "ratings",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write"
+      ],
+      "description": "Stores a vote for a specified user.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "ratings-destroy",
+      "category": "ratings",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete"
+      ],
+      "description": "Removes a vote and returns the affected count",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "ratings-result-details",
+      "category": "ratings",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns a list of detailed rating results.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "ratings-resume-find-resume",
+      "category": "ratings-resume",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns a list of ratings resume entries",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "ratings-resume-create",
+      "category": "ratings-resume",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates a new resume and returns affected count.",
+      "relatedTools": [
+        "ratings-resume-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "ratings-resume-update",
+      "category": "ratings-resume",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates resume information and returns affected count",
+      "relatedTools": [
+        "ratings-resume-create"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "seasons-find-all",
+      "category": "seasons",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of all seasons.",
+      "relatedTools": [
+        "seasons-create",
+        "seasons-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "seasons-create",
+      "category": "seasons",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates and returns a new season entity",
+      "relatedTools": [
+        "seasons-find-all",
+        "seasons-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "seasons-get-current-season",
+      "category": "seasons",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns the current season details.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "seasons-update",
+      "category": "seasons",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates the details of a specific season.",
+      "relatedTools": [
+        "seasons-find-all",
+        "seasons-create"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "seasons-hard-remove",
+      "category": "seasons",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a season and returns the affected count.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-find-all",
+      "category": "tags",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of tags.",
+      "relatedTools": [
+        "tags-create",
+        "tags-update",
+        "tags-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "tags-create",
+      "category": "tags",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates a new tag with an optional icon.",
+      "relatedTools": [
+        "tags-find-all",
+        "tags-update",
+        "tags-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-statistics",
+      "category": "tags",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns statistics related to tags.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-result",
+      "category": "tags",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read"
+      ],
+      "description": "Returns statistics associated with a specific tag.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-get-statistic-by-tag-id",
+      "category": "tags",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query"
+      ],
+      "description": "Returns statistics associated with a specific tag.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-update",
+      "category": "tags",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates a tag and returns the updated tag details",
+      "relatedTools": [
+        "tags-find-all",
+        "tags-create",
+        "tags-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-hard-remove",
+      "category": "tags",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a tag and returns the affected count",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-remove",
+      "category": "tags",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a tag and returns affected count.",
+      "relatedTools": [
+        "tags-find-all",
+        "tags-create",
+        "tags-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "tags-restore",
+      "category": "tags",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write"
+      ],
+      "description": "Restores a previously deleted tag.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "clients-find-all",
+      "category": "clients",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "list"
+      ],
+      "description": "Returns a list of clients including their project counts.",
+      "relatedTools": [
+        "clients-create",
+        "clients-update",
+        "clients-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "name": "clients-create",
+      "category": "clients",
+      "operation": "write",
+      "httpMethod": "POST",
+      "tags": [
+        "write",
+        "create",
+        "mutation"
+      ],
+      "description": "Creates and returns a new client entity",
+      "relatedTools": [
+        "clients-find-all",
+        "clients-update",
+        "clients-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "clients-find-by-id",
+      "category": "clients",
+      "operation": "read",
+      "httpMethod": "GET",
+      "tags": [
+        "read",
+        "query",
+        "single"
+      ],
+      "description": "Fetches a client record using its unique identifier.",
+      "relatedTools": [],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "clients-update",
+      "category": "clients",
+      "operation": "write",
+      "httpMethod": "PATCH",
+      "tags": [
+        "write",
+        "update",
+        "mutation"
+      ],
+      "description": "Updates the specified client's information.",
+      "relatedTools": [
+        "clients-find-all",
+        "clients-create",
+        "clients-remove"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "clients-remove",
+      "category": "clients",
+      "operation": "delete",
+      "httpMethod": "DELETE",
+      "tags": [
+        "delete",
+        "mutation"
+      ],
+      "description": "Removes a client and returns the affected count.",
+      "relatedTools": [
+        "clients-find-all",
+        "clients-create",
+        "clients-update"
+      ],
+      "allowedRoleIds": [
+        1,
+        2
+      ]
+    }
+  ]
+}
