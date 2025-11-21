@@ -55,8 +55,19 @@ export function loadToolMetadata(): Map<string, ToolMetadata> {
   }
 }
 
-// Map tool names to categories based on prefix
-export function categorizeTool(toolName: string): string {
+// Map tool names to categories based on metadata, fallback to prefix
+export function categorizeTool(
+  toolName: string,
+  metadata?: Map<string, ToolMetadata>,
+): string {
+  // Try to get category from metadata first
+  if (metadata) {
+    const meta = metadata.get(toolName);
+    if (meta?.category) {
+      return meta.category;
+    }
+  }
+  // Fallback to prefix-based categorization
   const prefix = toolName.split('-')[0];
   return prefix;
 }
@@ -64,11 +75,12 @@ export function categorizeTool(toolName: string): string {
 // Group all tools by category
 export function groupToolsByCategory(
   tools: OpenAI.Responses.FunctionTool[],
+  metadata?: Map<string, ToolMetadata>,
 ): Map<string, OpenAI.Responses.FunctionTool[]> {
   const groups = new Map<string, OpenAI.Responses.FunctionTool[]>();
 
   for (const tool of tools) {
-    const category = categorizeTool(tool.name);
+    const category = categorizeTool(tool.name, metadata);
     if (!groups.has(category)) {
       groups.set(category, []);
     }
@@ -192,9 +204,9 @@ export async function selectRelevantTools(
   conversationHistory: string[] = [],
   model: OpenAiModel = OpenAiModel.GPT_4O_MINI,
 ): Promise<ToolSelectionResult> {
-  const toolGroups = groupToolsByCategory(allTools);
-  const categories = Array.from(toolGroups.keys());
   const metadata = loadToolMetadata();
+  const toolGroups = groupToolsByCategory(allTools, metadata);
+  const categories = Array.from(toolGroups.keys());
 
   // Detect operation type from query
   const operationType = detectOperationType(userMessage);

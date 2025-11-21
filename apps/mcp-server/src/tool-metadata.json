@@ -432,7 +432,7 @@
         "query",
         "list"
       ],
-      "description": "Returns a list of events",
+      "description": "Returns a list of events (Calender)",
       "relatedTools": [
         "events-create",
         "events-update",

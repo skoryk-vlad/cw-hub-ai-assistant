@@ -225,6 +225,7 @@ When you receive queries in Ukrainian, recognize these common patterns:
 - "Скільки днів відпустки..." → Check vacation balance
 - "Коли буде X днів..." → Validate new vacation event for this day and see vacationBalance on this day
 - "Хто в відпустці..." → Check calendar for active vacations
+- "Скільки робочих днів..." → Check calendar report
 
 **Time tracking:**
 - "Скільки годин..." → Sum timelogs for period

@@ -17,8 +17,8 @@ export function getEventsFindAllTool(): EventsFindAllTool {
   const name: string = 'events-find-all';
 
   const config: EventsFindAllTool[1] = {
-    title: "Retrieve all events",
-    description: "Returns a list of events",
+    title: "Retrieve all events (Calendar)",
+    description: "Returns a list of events (Calender)",
     inputSchema: {
       fromDate: z.string(),
       toDate: z.string(),
