@@ -112,22 +112,24 @@ The app uses OpenAI's **Responses API** (not Chat Completions):
 
 ## Environment Configuration
 
-**For Docker:**
+**Complete Environment Variables:**
 ```bash
-MONGODB_URI=mongodb://root:example@mongodb:27017/clockwise_ai?authSource=admin
-OPENAI_API_KEY=sk-...
-OPENAI_VECTOR_STORE_ID=vs_...
-```
-
-**For Local Development:**
-```bash
+# Server Configuration
 PORT=3001
-OPENAI_API_KEY=sk-...
-OPENAI_VECTOR_STORE_ID=vs_...
 APP_URL=http://localhost:3000
 ALLOWED_ORIGIN=http://localhost:4000
 JWT_SECRET=local-jwt-secret
-MONGODB_URI=mongodb://root:example@localhost:27017/clockwise_ai?authSource=admin
+
+# MongoDB Configuration (URI is built from these variables)
+MONGO_USERNAME=root
+MONGO_PASSWORD=example
+MONGO_DATABASE=clockwise_ai
+MONGO_HOST=mongodb          # Use 'localhost' for local development without Docker
+MONGO_PORT=27017
+
+# OpenAI Configuration
+OPENAI_API_KEY=sk-...
+OPENAI_VECTOR_STORE_ID=vs_...
 ```
 
 ## Important Implementation Notes

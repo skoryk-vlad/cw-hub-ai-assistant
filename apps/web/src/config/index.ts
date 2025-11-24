@@ -6,11 +6,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
+ * Build MongoDB connection URI from individual environment variables
+ */
+function buildMongoDbUri(): string {
+  const username = process.env.MONGO_USERNAME || 'root';
+  const password = process.env.MONGO_PASSWORD || 'example';
+  const host = process.env.MONGO_HOST || 'localhost';
+  const port = process.env.MONGO_PORT || '27017';
+  const database = process.env.MONGO_DATABASE || 'clockwise_ai';
+
+  return `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`;
+}
+
+/**
  * Load environment variables and validate required configuration
  */
 export const config = {
   /** MongoDB connection URI */
-  mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/clockwise_ai',
+  mongodbUri: buildMongoDbUri(),
 
   /** OpenAI API key */
   openaiApiKey: validateRequired(process.env.OPENAI_API_KEY, 'OPENAI_API_KEY'),
