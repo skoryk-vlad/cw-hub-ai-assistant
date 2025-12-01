@@ -23,7 +23,7 @@ export function getRatingsDestroyTool(): RatingsDestroyTool {
 
   const cb: RatingsDestroyTool[2] = async ({ accessToken, ...params }) => {
     try {
-      const response = await axios.delete(`${process.env.APP_URL}/ratings/vote/${params.userId}`, params.body, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const response = await axios.delete(`${process.env.APP_URL}/ratings/vote/${params.userId}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: params.body });
       const responseString = JSON.stringify(response.data);
       return { content: [{ type: 'text', text: responseString }] };
     } catch (err) {

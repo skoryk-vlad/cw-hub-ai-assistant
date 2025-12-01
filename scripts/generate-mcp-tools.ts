@@ -469,20 +469,35 @@ function buildAxiosLines(
   }
   if (headers.length) cfg.push(`headers: { ${headers.join(', ')} }`);
 
-  const cfgExpr = cfg.length ? `, { ${cfg.join(', ')} }` : '';
   const baseUrl = '`' + '${process.env.APP_URL}' + pathTpl + '`';
   const url = queryKeys.length > 0 ? `buildUrl(${baseUrl}, params)` : baseUrl;
 
+  // DELETE with body needs special handling - body goes in config.data
+  if (method === 'DELETE' && hasBody) {
+    cfg.push(`data: params.body`);
+    const cfgExpr = `, { ${cfg.join(', ')} }`;
+    return [
+      `const response = await axios.delete(${url}${cfgExpr});`,
+    ];
+  }
+
+  const cfgExpr = cfg.length ? `, { ${cfg.join(', ')} }` : '';
+
+  // GET and DELETE without body
   if (['GET', 'DELETE'].includes(method) && !hasBody) {
     return [
       `const response = await axios.${method.toLowerCase()}(${url}${cfgExpr});`,
     ];
   }
+
+  // POST, PUT, PATCH with body
   if (hasBody) {
     return [
       `const response = await axios.${method.toLowerCase()}(${url}, params.body${cfgExpr});`,
     ];
   }
+
+  // Fallback
   return [
     `const response = await axios.${method.toLowerCase()}(${url}${cfgExpr});`,
   ];

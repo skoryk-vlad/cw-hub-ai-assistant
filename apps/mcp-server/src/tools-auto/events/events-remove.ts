@@ -23,7 +23,7 @@ export function getEventsRemoveTool(): EventsRemoveTool {
 
   const cb: EventsRemoveTool[2] = async ({ accessToken, ...params }) => {
     try {
-      const response = await axios.delete(`${process.env.APP_URL}/events/${params.id}`, params.body, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const response = await axios.delete(`${process.env.APP_URL}/events/${params.id}`, { headers: { Authorization: `Bearer ${accessToken}` }, data: params.body });
       const responseString = JSON.stringify(response.data);
       return { content: [{ type: 'text', text: responseString }] };
     } catch (err) {
