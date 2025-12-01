@@ -51,7 +51,7 @@ async function generateConversationTitle(userMessage: string): Promise<string> {
     });
 
     const response = await openai.chat.completions.create({
-      model: openaiConfig.titleGeneration.model,
+      model: openaiConfig.helperModel,
       max_tokens: openaiConfig.titleGeneration.maxTokens,
       temperature: openaiConfig.titleGeneration.temperature,
       messages: [

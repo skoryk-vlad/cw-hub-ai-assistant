@@ -118,13 +118,11 @@ export async function chat(
         .join(' '),
     );
 
-  const toolSelectionModel = OpenAiModel.GPT_4O_MINI;
   const { tools: relevantTools, usage: toolSelectionUsage } =
     await selectRelevantTools(
       message,
       openaiTools,
       conversationContext,
-      toolSelectionModel,
     );
 
   // Add tool selection usage to total
@@ -143,7 +141,7 @@ export async function chat(
       model,
       input: [...history, ...newMessages],
       reasoning: {
-        effort: 'none',
+        effort: model === OpenAiModel.GPT_5_1 ? 'none' : 'low',
       },
       tools: [
         {
@@ -194,7 +192,7 @@ export async function chat(
   };
   const totalPrice =
     estimatePrice(mainModelUsage, model) +
-    estimatePrice(toolSelectionUsage, toolSelectionModel);
+    estimatePrice(toolSelectionUsage, openaiConfig.helperModel as OpenAiModel);
 
   return {
     newMessages,

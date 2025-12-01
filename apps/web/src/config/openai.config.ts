@@ -12,14 +12,16 @@ export enum OpenAiModel {
  */
 export const openaiConfig = {
   /** Model to use for chat completions */
-  model: OpenAiModel.GPT_5_1,
+  model: config.openaiModel,
 
   /** Vector store ID for file search (RAG) */
   vectorStoreId: config.openaiVectorStoreId,
 
+  /** Model for helper tasks (tool selection, title generation) */
+  helperModel: config.openaiHelperModel,
+
   /** Configuration for title generation */
   titleGeneration: {
-    model: OpenAiModel.GPT_4O_MINI,
     maxTokens: 15,
     temperature: 0.7,
   },

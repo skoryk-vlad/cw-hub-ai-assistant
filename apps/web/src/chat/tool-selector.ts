@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { ToolUsage } from '../models/tool-usage.model.js';
 import { IModelUsage } from '../utils/billing.js';
-import { OpenAiModel } from '../config/openai.config.js';
+import { openaiConfig } from '../config/openai.config.js';
 import { config } from '../config/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -202,8 +202,8 @@ export async function selectRelevantTools(
   userMessage: string,
   allTools: OpenAI.Responses.FunctionTool[],
   conversationHistory: string[] = [],
-  model: OpenAiModel = OpenAiModel.GPT_4O_MINI,
 ): Promise<ToolSelectionResult> {
+  const model = openaiConfig.helperModel;
   const metadata = loadToolMetadata();
   const toolGroups = groupToolsByCategory(allTools, metadata);
   const categories = Array.from(toolGroups.keys());

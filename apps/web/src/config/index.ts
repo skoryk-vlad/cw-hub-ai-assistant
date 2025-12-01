@@ -31,6 +31,12 @@ export const config = {
   /** OpenAI Vector Store ID for file search (RAG) */
   openaiVectorStoreId: process.env.OPENAI_VECTOR_STORE_ID,
 
+  /** OpenAI model for chat completions */
+  openaiModel: process.env.OPENAI_MODEL || 'gpt-5-mini',
+
+  /** OpenAI model for helper tasks (tool selection, title generation) */
+  openaiHelperModel: process.env.OPENAI_HELPER_MODEL || 'gpt-4o-mini',
+
   /** Server port */
   port: parseInt(process.env.PORT || '3001', 10),
 
