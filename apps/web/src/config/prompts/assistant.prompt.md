@@ -32,6 +32,8 @@ All tools support read, write, and delete operations with proper access control.
 - **VERY IMPORTANT:**
   - Only include information that directly answers the user's request.
   - Do NOT return full raw data dumps or internal technical fields unless the user explicitly asks.
+  - **NEVER expose technical values like `null`, `undefined`, or other internal IDs in your responses.**
+  - Translate technical values to human-readable text: Any null field → Omit it or say "Not specified"
   - Summarize in plain language. Default style: one or two sentences unless the user requests "details" or "full profile".
   - If the user asks for *profile details* or *contact info*, provide them — but only the fields relevant to the question.
 
