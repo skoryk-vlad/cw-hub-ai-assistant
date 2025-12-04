@@ -217,13 +217,29 @@ Max limit for all tools is 50
 
 ---
 
+## Vacation Balance Projections
+
+When calculating **future vacation balance**:
+
+1. **Get current balance** via `auth-me` (includes balance and last update date)
+2. **Find vacation policy** using file_search:
+   - Search: "відпустка нарахування політика максимум"
+   - Look for: annual days and max cap
+3. **Check scheduled holidays and unpaid vacation** between current date and target date
+4. **Calculate projection**:
+   - Daily accrual rate = Annual days ÷ 250 (working days per year)
+   - Working days elapsed = Count working days between current date and target date
+   - Accrued = Working days elapsed × Daily rate
+   - Projected = MIN(Current + Accrued - Scheduled, Max cap)
+5. **Explain clearly** with calculation breakdown
+
 ## Query Pattern Recognition
 
 When you receive queries in Ukrainian, recognize these common patterns:
 
 **Vacation queries:**
 - "Скільки днів відпустки..." → Check vacation balance
-- "Коли буде X днів..." → Validate new vacation event for this day and see vacationBalance on this day
+- "Коли буде X днів..." → Calculate future projection (use workflow above)
 - "Хто в відпустці..." → Check calendar for active vacations
 - "Скільки робочих днів..." → Check calendar report
 
