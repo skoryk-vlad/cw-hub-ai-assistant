@@ -26,3 +26,35 @@ export const openaiConfig = {
     temperature: 0.7,
   },
 } as const;
+
+/**
+ * Context optimization configuration
+ * Controls conversation windowing and tool response truncation
+ */
+export const contextOptimizationConfig = {
+  /** Maximum number of "meaningful" conversation items to send to OpenAI */
+  maxConversationItems: parseInt(
+    process.env.MAX_CONVERSATION_ITEMS || '10',
+    10,
+  ),
+
+  /** Tool response truncation settings */
+  toolResponseTruncation: {
+    /** Start extracting key fields from arrays larger than this */
+    arrayItemThreshold: parseInt(
+      process.env.TOOL_RESPONSE_ARRAY_THRESHOLD || '5',
+      10,
+    ),
+    /** Maximum recursion depth for nested object processing */
+    maxDepth: parseInt(process.env.TOOL_RESPONSE_MAX_DEPTH || '3', 10),
+    /** Maximum string length before truncation */
+    maxStringLength: parseInt(
+      process.env.TOOL_RESPONSE_MAX_STRING_LENGTH || '1000',
+      10,
+    ),
+    /** Key fields to extract from objects (id, name, etc.) */
+    keyFields: (
+      process.env.TOOL_RESPONSE_KEY_FIELDS || 'id,name,title,status,type'
+    ).split(','),
+  },
+};

@@ -4,7 +4,14 @@ import { chat } from './openai-integration.js';
 import { ResponseInput } from 'openai/resources/responses/responses.mjs';
 import OpenAI from 'openai';
 import { config } from '../config/index.js';
-import { openaiConfig } from '../config/openai.config.js';
+import {
+  openaiConfig,
+  contextOptimizationConfig,
+} from '../config/openai.config.js';
+import {
+  selectConversationItems,
+  optimizeFunctionOutputs,
+} from './context-optimizer.js';
 
 /**
  * Get or create a conversation for a user
@@ -36,9 +43,19 @@ export async function ensureConversation(
 
 /**
  * Convert conversation items to OpenAI history format
+ * with context optimization (windowing + tool response truncation)
  */
 export function toOpenAIHistory(messages: IItemDocument[]) {
-  return messages as ResponseInput;
+  // Step 1: Apply conversation windowing to keep last N meaningful items
+  const windowedMessages = selectConversationItems(
+    messages,
+    contextOptimizationConfig.maxConversationItems,
+  );
+
+  // Step 2: Optimize tool response outputs by extracting key fields
+  const optimizedMessages = optimizeFunctionOutputs(windowedMessages);
+
+  return optimizedMessages as ResponseInput;
 }
 
 /**
@@ -58,7 +75,7 @@ async function generateConversationTitle(userMessage: string): Promise<string> {
         {
           role: 'system',
           content:
-            'Generate a concise 3-5 word title for this conversation. Match the language of the user\'s message (Ukrainian or English). Only return the title, nothing else.',
+            "Generate a concise 3-5 word title for this conversation. Match the language of the user's message (Ukrainian or English). Only return the title, nothing else.",
         },
         {
           role: 'user',
